@@ -24,7 +24,6 @@ public class DynamicList {
         int sizeOfT1 = 0;
         int sizeOfT2 = 0;
 
-        System.out.println();
 
         //Print out list
         while (t1 != null) {
@@ -32,7 +31,6 @@ public class DynamicList {
             t1 = t1.getNext();
         }
 
-        System.out.println();
 
         //print second list
         while (t2 != null) {

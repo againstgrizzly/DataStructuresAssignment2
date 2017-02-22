@@ -49,6 +49,7 @@ public class DynamicDriver {
 
         list3.union(list4);
         list3.intersection(list4);
+        System.out.println();
 
 
 
