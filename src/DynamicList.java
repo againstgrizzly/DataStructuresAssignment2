@@ -87,7 +87,7 @@ public class DynamicList {
         }
 
         System.out.println();
-        System.out.println("Union:");
+        System.out.println("Intersection:");
         newList.print();
     }
 
