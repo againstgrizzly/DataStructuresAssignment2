@@ -13,7 +13,7 @@ public class DynamicList {
         size = 0;
     }
 
-    public void union(DynamicList x) {
+    public void intersection(DynamicList x) {
 
 
         DynamicNode t1 = list, t2 = x.list;
@@ -48,8 +48,6 @@ public class DynamicList {
             t1 = t1.getNext();
         }
 
-        System.out.println();
-        System.out.println();
 
         t2 = x.list;
         sizeOfT2 = 0;
@@ -88,18 +86,9 @@ public class DynamicList {
             newList.insertLast(unionArray[i]);
         }
 
+        System.out.println();
+        System.out.println("Union:");
         newList.print();
-
-
-
-//        newList = newHead;
-//
-//        while(newList != null){
-//            System.out.print(newList.getInfo());
-//            newList = newList.getNext();
-//        }
-
-
     }
 
     boolean isPresent(DynamicNode head, Object data) {
@@ -113,7 +102,7 @@ public class DynamicList {
     }
 
 
-    public void intersection(DynamicList x) {
+    public void union(DynamicList x) {
 
     }
 
