@@ -46,6 +46,8 @@ public class DynamicDriver {
         list4.insertLast(new IntData(8));
         list4.insertLast(new IntData(9));
 
+
+        list3.union(list4);
         list3.intersection(list4);
 
 

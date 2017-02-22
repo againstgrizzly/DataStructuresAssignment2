@@ -2,6 +2,10 @@
 //Assignment #3
 //COP 3530
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.jar.Pack200;
+
 public class DynamicList {
 
     private DynamicNode list;
@@ -96,9 +100,9 @@ public class DynamicList {
     }
 
 
-
-
     public void union(DynamicList x) {
+
+        Set<Integer> set = new HashSet<>();
 
         DynamicNode t1 = list, t2 = x.list;
         int sizeOfT1 = 0;
@@ -120,7 +124,6 @@ public class DynamicList {
         }
 ///////////////////////////////////////
         System.out.println();
-
 
         Object array1[] = new Object[sizeOfT1];
         Object array2[] = new Object[sizeOfT2];
@@ -148,32 +151,19 @@ public class DynamicList {
         for (int i = 0; i < array1.length; i++) {
             for (int j = 0; j < array2.length; j++) {
 
-                if (array1[i].toString().equals(array2[j].toString())) {
-                    newArraySize--;
-                }
-            }
-        }
-
-        Object unionArray[] = new Object[newArraySize];
-        newArraySize = 0;
-        for (int i = 0; i < array1.length; i++) {
-            for (int j = 0; j < array2.length; j++) {
-
-                if (array1[i].toString().equals(array2[j].toString())) {
-                    unionArray[newArraySize] = array1[i];
-                    newArraySize++;
-                }
+                set.add(Integer.valueOf(array1[i].toString()));
+                set.add(Integer.valueOf(array2[j].toString()));
             }
         }
 
         DynamicList newList = new DynamicList();
 
-        for (int i = 0; i < unionArray.length; i++) {
-            newList.insertLast(unionArray[i]);
+        for (int i = 0; i < set.size(); i++) {
+            newList.insertLast(set.toArray()[i]);
         }
 
         System.out.println();
-        System.out.println("Intersection:");
+        System.out.println("Union:");
         newList.print();
 
 
@@ -200,15 +190,14 @@ public class DynamicList {
         DynamicNode prior = list;
         DynamicNode present = list.getNext();
 
-        while (prior != null && present != null)
-        {
-           //alter link of prior node
+        while (prior != null && present != null) {
+            //alter link of prior node
             prior.next = present.getNext();
 
-           //open up node
+            //open up node
             present = null;
 
-           ///update nodes
+            ///update nodes
             prior = prior.getNext();
             if (prior != null)
                 present = prior.getNext();
