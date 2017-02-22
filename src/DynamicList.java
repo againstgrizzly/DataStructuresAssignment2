@@ -22,6 +22,7 @@ public class DynamicList {
 
         System.out.println();
 
+        //Print out list
         while (t1 != null) {
             sizeOfT1++;
             t1 = t1.getNext();
@@ -29,6 +30,7 @@ public class DynamicList {
 
         System.out.println();
 
+        //print second list
         while (t2 != null) {
             sizeOfT2++;
             t2 = t2.getNext();
@@ -37,6 +39,8 @@ public class DynamicList {
         Object array1[] = new Object[sizeOfT1];
         Object array2[] = new Object[sizeOfT2];
 
+
+        //create arrays with enough elements to hold contents of list
         t1 = list;
         sizeOfT1 = 0;
         while (t1 != null) {
@@ -54,7 +58,7 @@ public class DynamicList {
             t2 = t2.getNext();
         }
 
-
+        //if objects are equal, make the intersection holder bigger
         int newArraySize = 0;
         for (int i = 0; i < array1.length; i++) {
             for (int j = 0; j < array2.length; j++) {
@@ -65,6 +69,7 @@ public class DynamicList {
             }
         }
 
+        //contain instersection's objects
         Object unionArray[] = new Object[newArraySize];
         newArraySize = 0;
         for (int i = 0; i < array1.length; i++) {
@@ -79,24 +84,18 @@ public class DynamicList {
 
         DynamicList newList = new DynamicList();
 
+        //put intersection objects into list
         for (int i = 0; i < unionArray.length; i++) {
             newList.insertLast(unionArray[i]);
         }
 
+        //printing
         System.out.println();
         System.out.println("Intersection:");
         newList.print();
     }
 
-    boolean isPresent(DynamicNode head, Object data) {
-        DynamicNode t = head;
-        while (t != null) {
-            if (t.getInfo() == data)
-                return true;
-            t = t.getNext();
-        }
-        return false;
-    }
+
 
 
     public void union(DynamicList x) {
@@ -181,6 +180,8 @@ public class DynamicList {
     }
 
     public void deleteEverySecond() {
+
+        ///printing
         System.out.println("Delete Every Second:");
         insertLast(1);
         insertLast(2);
@@ -196,21 +197,21 @@ public class DynamicList {
         if (list == null)
             return;
 
-        DynamicNode prev = list;
-        DynamicNode now = list.getNext();
+        DynamicNode prior = list;
+        DynamicNode present = list.getNext();
 
-        while (prev != null && now != null)
+        while (prior != null && present != null)
         {
-           /* Change next link of previus node */
-            prev.next = now.getNext();
+           //alter link of prior node
+            prior.next = present.getNext();
 
-           /* Free node */
-            now = null;
+           //open up node
+            present = null;
 
-           /*Update prev and now */
-            prev = prev.getNext();
-            if (prev != null)
-                now = prev.getNext();
+           ///update nodes
+            prior = prior.getNext();
+            if (prior != null)
+                present = prior.getNext();
         }
 
         print();
