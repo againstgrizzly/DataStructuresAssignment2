@@ -28,5 +28,26 @@ public class DynamicDriver {
         list.reverseIteratively();
         list.print();
 
+        System.out.println("------------------------------");
+
+        DynamicList list3, list4;
+
+        list3 = new DynamicList();
+        list4 = new DynamicList();
+
+        list3.insertLast(new IntData(5));
+        list3.insertLast(new IntData(6));
+        list3.insertLast(new IntData(7));
+        list3.insertLast(new IntData(8));
+
+        list4.insertLast(new IntData(5));
+        list4.insertLast(new IntData(6));
+        list4.insertLast(new IntData(8));
+        list4.insertLast(new IntData(9));
+
+        list3.union(list4);
+
+
+
     }
 }

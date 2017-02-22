@@ -13,6 +13,114 @@ public class DynamicList {
         size = 0;
     }
 
+    public void union(DynamicList x) {
+
+
+        DynamicNode t1 = list, t2 = x.list;
+        int sizeOfT1 = 0;
+        int sizeOfT2 = 0;
+
+        while (t1 != null) {
+            System.out.print(t1.getInfo());
+            sizeOfT1++;
+            t1 = t1.getNext();
+        }
+
+        System.out.println();
+
+        while (t2 != null) {
+            System.out.print(t2.getInfo());
+            sizeOfT2++;
+            t2 = t2.getNext();
+        }
+
+        System.out.println();
+
+
+        Object array1[] = new Object[sizeOfT1];
+        Object array2[] = new Object[sizeOfT2];
+
+        t1 = list;
+        sizeOfT1 = 0;
+        while (t1 != null) {
+            array1[sizeOfT1] = t1.getInfo();
+            sizeOfT1++;
+            t1 = t1.getNext();
+        }
+
+        System.out.println();
+        System.out.println();
+
+        t2 = x.list;
+        sizeOfT2 = 0;
+        while (t2 != null) {
+            array2[sizeOfT2] = t2.getInfo();
+            sizeOfT2++;
+            t2 = t2.getNext();
+        }
+
+
+        int newArraySize = 0;
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+
+                if (array1[i].toString().equals(array2[j].toString())) {
+                    newArraySize++;
+                }
+            }
+        }
+
+        Object unionArray[] = new Object[newArraySize];
+        newArraySize = 0;
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+
+                if (array1[i].toString().equals(array2[j].toString())) {
+                    unionArray[newArraySize] = array1[i];
+                    newArraySize++;
+                }
+            }
+        }
+
+        DynamicList newList = new DynamicList();
+
+        for(int i = 0; i < unionArray.length; i++){
+            newList.insertLast(unionArray[i]);
+        }
+
+        newList.print();
+
+
+
+//        newList = newHead;
+//
+//        while(newList != null){
+//            System.out.print(newList.getInfo());
+//            newList = newList.getNext();
+//        }
+
+
+    }
+
+    boolean isPresent(DynamicNode head, Object data) {
+        DynamicNode t = head;
+        while (t != null) {
+            if (t.getInfo() == data)
+                return true;
+            t = t.getNext();
+        }
+        return false;
+    }
+
+
+    public void intersection(DynamicList x) {
+
+    }
+
+    public void deleteEverySecond() {
+
+    }
+
     public void print() {
 
         /*
