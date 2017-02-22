@@ -1,5 +1,5 @@
 //4737
-//Assignment #2
+//Assignment #3
 //COP 3530
 
 public class IntData implements Sortable {

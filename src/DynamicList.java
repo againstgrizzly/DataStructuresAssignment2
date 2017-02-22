@@ -1,5 +1,5 @@
 //4737
-//Assignment #2
+//Assignment #3
 //COP 3530
 
 public class DynamicList {
@@ -20,8 +20,9 @@ public class DynamicList {
         int sizeOfT1 = 0;
         int sizeOfT2 = 0;
 
+        System.out.println();
+
         while (t1 != null) {
-            System.out.print(t1.getInfo());
             sizeOfT1++;
             t1 = t1.getNext();
         }
@@ -29,13 +30,9 @@ public class DynamicList {
         System.out.println();
 
         while (t2 != null) {
-            System.out.print(t2.getInfo());
             sizeOfT2++;
             t2 = t2.getNext();
         }
-
-        System.out.println();
-
 
         Object array1[] = new Object[sizeOfT1];
         Object array2[] = new Object[sizeOfT2];
@@ -82,7 +79,7 @@ public class DynamicList {
 
         DynamicList newList = new DynamicList();
 
-        for(int i = 0; i < unionArray.length; i++){
+        for (int i = 0; i < unionArray.length; i++) {
             newList.insertLast(unionArray[i]);
         }
 
@@ -104,9 +101,119 @@ public class DynamicList {
 
     public void union(DynamicList x) {
 
+        DynamicNode t1 = list, t2 = x.list;
+        int sizeOfT1 = 0;
+        int sizeOfT2 = 0;
+
+        /////printing stuff
+        while (t1 != null) {
+            System.out.print(t1.getInfo());
+            sizeOfT1++;
+            t1 = t1.getNext();
+        }
+
+        System.out.println();
+
+        while (t2 != null) {
+            System.out.print(t2.getInfo());
+            sizeOfT2++;
+            t2 = t2.getNext();
+        }
+///////////////////////////////////////
+        System.out.println();
+
+
+        Object array1[] = new Object[sizeOfT1];
+        Object array2[] = new Object[sizeOfT2];
+
+        ////put objects in array
+        t1 = list;
+        sizeOfT1 = 0;
+        while (t1 != null) {
+            array1[sizeOfT1] = t1.getInfo();
+            sizeOfT1++;
+            t1 = t1.getNext();
+        }
+
+        ////put objects in array
+        t2 = x.list;
+        sizeOfT2 = 0;
+        while (t2 != null) {
+            array2[sizeOfT2] = t2.getInfo();
+            sizeOfT2++;
+            t2 = t2.getNext();
+        }
+
+
+        int newArraySize = sizeOfT1 + sizeOfT2;
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+
+                if (array1[i].toString().equals(array2[j].toString())) {
+                    newArraySize--;
+                }
+            }
+        }
+
+        Object unionArray[] = new Object[newArraySize];
+        newArraySize = 0;
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+
+                if (array1[i].toString().equals(array2[j].toString())) {
+                    unionArray[newArraySize] = array1[i];
+                    newArraySize++;
+                }
+            }
+        }
+
+        DynamicList newList = new DynamicList();
+
+        for (int i = 0; i < unionArray.length; i++) {
+            newList.insertLast(unionArray[i]);
+        }
+
+        System.out.println();
+        System.out.println("Intersection:");
+        newList.print();
+
+
     }
 
     public void deleteEverySecond() {
+        System.out.println("Delete Every Second:");
+        insertLast(1);
+        insertLast(2);
+        insertLast(3);
+        insertLast(4);
+        insertLast(5);
+        insertLast(6);
+        insertLast(7);
+        insertLast(8);
+        print();
+
+
+        if (list == null)
+            return;
+
+        DynamicNode prev = list;
+        DynamicNode now = list.getNext();
+
+        while (prev != null && now != null)
+        {
+           /* Change next link of previus node */
+            prev.next = now.getNext();
+
+           /* Free node */
+            now = null;
+
+           /*Update prev and now */
+            prev = prev.getNext();
+            if (prev != null)
+                now = prev.getNext();
+        }
+
+        print();
 
     }
 

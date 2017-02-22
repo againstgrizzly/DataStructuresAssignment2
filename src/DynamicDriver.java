@@ -1,5 +1,5 @@
 //4737
-//Assignment #2
+//Assignment #3
 //COP 3530
 
 public class DynamicDriver {
@@ -30,10 +30,11 @@ public class DynamicDriver {
 
         System.out.println("------------------------------");
 
-        DynamicList list3, list4;
+        DynamicList list3, list4, list5;
 
         list3 = new DynamicList();
         list4 = new DynamicList();
+        list5 = new DynamicList();
 
         list3.insertLast(new IntData(5));
         list3.insertLast(new IntData(6));
@@ -45,7 +46,12 @@ public class DynamicDriver {
         list4.insertLast(new IntData(8));
         list4.insertLast(new IntData(9));
 
-        list3.union(list4);
+        list3.intersection(list4);
+
+
+
+        list5.deleteEverySecond();
+
 
 
 
